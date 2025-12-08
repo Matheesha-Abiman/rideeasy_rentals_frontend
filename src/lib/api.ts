@@ -1,4 +1,4 @@
-const API_BASE_URL = "https://rideeasy-rentals-backen-git-9f369b-matheeshas-projects-cdae3c16.vercel.app/api/v1";
+const API_BASE_URL = "https://rideeasy-rentals-backend.vercel.app/api/v1";
 
 export interface AuthResponse {
   message: string;
@@ -26,8 +26,12 @@ export interface Bike {
 
 export interface Rental {
   _id: string;
-  bikeId: string | { _id: string; modelBike: string; brand: string; images: string };
-  userId: string | { _id: string; email: string; firstname: string; lastname: string };
+  bikeId:
+    | string
+    | { _id: string; modelBike: string; brand: string; images: string };
+  userId:
+    | string
+    | { _id: string; email: string; firstname: string; lastname: string };
   rentalStart: string;
   rentalEnd: string;
   totalHours: number;
@@ -74,7 +78,10 @@ class ApiClient {
     return response.json();
   }
 
-  async login(data: { email: string; password: string }): Promise<AuthResponse> {
+  async login(data: {
+    email: string;
+    password: string;
+  }): Promise<AuthResponse> {
     const response = await fetch(`${API_BASE_URL}/auth/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -107,9 +114,12 @@ class ApiClient {
   }
 
   async searchBikes(query: string): Promise<Bike[]> {
-    const response = await fetch(`${API_BASE_URL}/bike?search=${encodeURIComponent(query)}`, {
-      headers: this.getAuthHeader(),
-    });
+    const response = await fetch(
+      `${API_BASE_URL}/bike?search=${encodeURIComponent(query)}`,
+      {
+        headers: this.getAuthHeader(),
+      }
+    );
     if (!response.ok) throw new Error("Failed to search bikes");
     const json = await response.json();
     return json.data;

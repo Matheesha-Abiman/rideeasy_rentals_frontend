@@ -16,10 +16,8 @@ const Register = () => {
     email: "",
     password: "",
   });
-
   const [loading, setLoading] = useState(false);
-
-  const { register } = useAuth(); // from AuthContext
+  const { register } = useAuth();
   const { toast } = useToast();
   const navigate = useNavigate();
 
@@ -28,18 +26,11 @@ const Register = () => {
     setLoading(true);
 
     try {
-      await register(
-        formData.email,
-        formData.password,
-        formData.firstname,
-        formData.lastname
-      );
-
+      await register(formData.email, formData.password, formData.firstname, formData.lastname);
       toast({
         title: "Account created!",
-        description: "Your RideEasy account is ready. Please login to continue.",
+        description: "Welcome to RideEasy. Start exploring bikes!",
       });
-
       navigate("/login");
     } catch (error) {
       toast({
@@ -55,20 +46,15 @@ const Register = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-
       <div className="flex min-h-[calc(100vh-64px)] items-center justify-center p-4">
-        <Card className="w-full max-w-md border shadow-md">
+        <Card className="w-full max-w-md">
           <CardHeader className="text-center">
             <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-gradient-hero">
               <Bike className="h-6 w-6 text-primary-foreground" />
             </div>
-
             <CardTitle className="text-2xl">Create Account</CardTitle>
-            <CardDescription>
-              Join RideEasy and start your adventure
-            </CardDescription>
+            <CardDescription>Join RideEasy and start your adventure</CardDescription>
           </CardHeader>
-
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
@@ -78,27 +64,21 @@ const Register = () => {
                     id="firstname"
                     placeholder="John"
                     value={formData.firstname}
-                    onChange={(e) =>
-                      setFormData({ ...formData, firstname: e.target.value })
-                    }
+                    onChange={(e) => setFormData({ ...formData, firstname: e.target.value })}
                     required
                   />
                 </div>
-
                 <div className="space-y-2">
                   <Label htmlFor="lastname">Last Name</Label>
                   <Input
                     id="lastname"
                     placeholder="Doe"
                     value={formData.lastname}
-                    onChange={(e) =>
-                      setFormData({ ...formData, lastname: e.target.value })
-                    }
+                    onChange={(e) => setFormData({ ...formData, lastname: e.target.value })}
                     required
                   />
                 </div>
               </div>
-
               <div className="space-y-2">
                 <Label htmlFor="email">Email</Label>
                 <Input
@@ -106,13 +86,10 @@ const Register = () => {
                   type="email"
                   placeholder="you@example.com"
                   value={formData.email}
-                  onChange={(e) =>
-                    setFormData({ ...formData, email: e.target.value })
-                  }
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   required
                 />
               </div>
-
               <div className="space-y-2">
                 <Label htmlFor="password">Password</Label>
                 <Input
@@ -120,18 +97,14 @@ const Register = () => {
                   type="password"
                   placeholder="••••••••"
                   value={formData.password}
-                  onChange={(e) =>
-                    setFormData({ ...formData, password: e.target.value })
-                  }
+                  onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                   required
                 />
               </div>
-
               <Button type="submit" className="w-full" disabled={loading}>
                 {loading ? "Creating account..." : "Sign Up"}
               </Button>
             </form>
-
             <div className="mt-4 text-center text-sm">
               Already have an account?{" "}
               <Link to="/login" className="text-primary hover:underline">

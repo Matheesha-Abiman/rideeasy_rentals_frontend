@@ -1,4 +1,4 @@
-const API_BASE_URL = "https://rideeasy-rentals-backend.vercel.app/api/v1";
+const API_BASE_URL = "http://localhost:5000/api/v1";
 
 export interface AuthResponse {
   message: string;

@@ -31,7 +31,7 @@ const Register = () => {
         title: "Account created!",
         description: "Welcome to RideEasy. Start exploring bikes!",
       });
-      navigate("/bikes");
+      navigate("/login");
     } catch (error) {
       toast({
         title: "Registration failed",

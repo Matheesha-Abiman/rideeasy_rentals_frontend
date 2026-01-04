@@ -1,5 +1,8 @@
 # 🚲 RideEasy – Premium Bike Rental
 
+🚀 **Live Project:**  
+👉 https://rideeasy-rentals-frontend.vercel.app
+
 RideEasy – Premium Bike Rental is a **Full Stack Web Application** developed as a final coursework project for **Rapid Application Development (RAD)**.  
 The system provides a modern platform for managing bike rentals, offering a smooth user experience with advanced features such as an **AI-powered chatbot**, **dark mode theme**, and an **analytics dashboard**.
 
